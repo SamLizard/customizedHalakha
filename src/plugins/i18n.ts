@@ -13,8 +13,8 @@ const messages = mapValues({he, en, fr}, (messages, key) => {
 })
 const i18n = createI18n({
   legacy: false,
-  locale: import.meta.env.VITE_APP_I18N_LOCALE || 'en',
-  fallbackLocale: import.meta.env.VITE_APP_I18N_FALLBACK_LOCALE || 'en',
+  locale: import.meta.env.VITE_APP_I18N_LOCALE || 'fr',
+  fallbackLocale: import.meta.env.VITE_APP_I18N_FALLBACK_LOCALE || 'fr',
   messages
 });
 

@@ -1,14 +1,15 @@
 {
   "language": "Français",
   "dir": "ltr",
-  "title": "Composantes Vue",
+  "title": "Halakha",
   "salutation": "Salut",
   "logout": "Déconnection",
   "routes": {
     "home": "Accueil",
     "login": "Connection",
     "register": "Inscription",
-    "components": "Composantes"
+    "components": "Composantes",
+    "halakha": "Halakha"
   },
   "cancel": "Annuler",
   "proceed": "Procéder",
@@ -57,5 +58,10 @@
   "filter": "Filtrer",
   "filterTitle": "Filtrer les éléments",
   "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants et réessayer.",
-  "registerFailed": "L'inscription a échoué. Veuillez réessayer plus tard."
+  "registerFailed": "L'inscription a échoué. Veuillez réessayer plus tard.",
+  "tags": {
+    "shabbat": "Shabbat", 
+    "yomTov": "Yom tov", 
+    "erouv": "Erouv"
+  }
 }

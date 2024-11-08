@@ -1,14 +1,15 @@
 {
   "language": "English",
   "dir": "ltr",
-  "title": "Vue Components",
+  "title": "Halakha",
   "salutation": "Hi",
   "logout": "Logout",
   "routes": {
     "home": "Home",
     "login": "Login",
     "register": "Register",
-    "components": "Components"
+    "components": "Components",
+    "halakha": "Halakha"
   },
   "cancel": "Cancel",
   "proceed": "Proceed",

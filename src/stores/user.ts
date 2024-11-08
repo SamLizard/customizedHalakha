@@ -6,7 +6,7 @@ interface State {
 }
 
 export const useUserStore = defineStore('user', () => {
-  const userId = ref<State['userId']>(undefined);
+  const userId = ref<State['userId']>("a"); // undefined
 
   function changeUserId(newUserId: State['userId']): void {
     userId.value = newUserId;

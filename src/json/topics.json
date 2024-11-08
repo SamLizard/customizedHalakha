@@ -1,0 +1,10 @@
+[
+    {
+        "id": 0,
+        "mainTopic": "Erouv Tavshilin (should be id. Take from i18n? another table? both?)",
+        "tags": ["shabbat", "yomTov", "erouv", "should be id. Take from another table"],
+        "question": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction ? (should be i18n key name)",
+        "questionId": 0,
+        "supportedLanguages": ["fr"]
+    }
+]

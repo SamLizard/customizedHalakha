@@ -1,14 +1,15 @@
 {
   "language": "עברית",
   "dir": "rtl",
-  "title": "קומפוננטות של ויו",
+  "title": "הלכה",
   "salutation": "שלום",
   "logout": "התנתקות",
   "routes": {
     "home": "בית",
     "login": "התחברות",
     "register": "הרשמה",
-    "components": "קומפוננטות"
+    "components": "קומפוננטות",
+    "halakha": "הלכה"
   },
   "cancel": "ביטול",
   "proceed": "המשך",
