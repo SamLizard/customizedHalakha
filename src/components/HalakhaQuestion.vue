@@ -1,11 +1,11 @@
 <template>
   <div class="question-component" :class="'m' + ($vuetify.locale.isRtl ? 'r' : 'l') + '-4'">
     <!-- Display Question -->
-    <h2>{{ currentData.question }}</h2>
+    <h2>{{ data.question }}</h2>
 
     <!-- Display Answers as clickable buttons/bubbles -->
-    <div v-if="currentData.answers && Array.isArray(currentData.answers)" class="answer-options">
-      <div v-for="(answer, index) in currentData.answers" :key="index" class="answer-bubble">
+    <div v-if="data.answers && Array.isArray(data.answers)" class="answer-options">
+      <div v-for="(answer, index) in data.answers" :key="index" class="answer-bubble">
         <template v-if="Array.isArray(answer.answer)">
           <v-btn v-for="(option, optionIndex) in answer.answer" :key="optionIndex" @click="selectAnswer(index)"
             class="bubble">
@@ -19,8 +19,8 @@
     </div>
 
     <!-- Display Indications as bullet points, if present -->
-    <ul v-if="currentData.indications && Array.isArray(currentData.indications)" class="indications">
-      <li v-for="(indication, index) in currentData.indications" :key="index">
+    <ul v-if="data.indications && Array.isArray(data.indications)" class="indications">
+      <li v-for="(indication, index) in data.indications" :key="index">
         {{ indication }}
       </li>
     </ul>
@@ -45,8 +45,8 @@ interface QuestionData {
 const props = defineProps<{ data: QuestionData }>();
 const emit = defineEmits<{ (e: 'select', index: number): void }>();
 
-// Manage current question data
-const currentData = props.data;
+// // Manage current question data
+// const currentData = props.data;
 
 // Function to handle answer selection
 function selectAnswer(index: number) {
