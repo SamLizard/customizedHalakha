@@ -30,7 +30,7 @@
     "default": "The field",
     "username": "Username",
     "password": "Password"
-  },  
+  },
   "username": "Username",
   "password": "Password",
   "phone": "Telephone",
@@ -58,5 +58,6 @@
   "filter": "Filter",
   "filterTitle": "Filter Items",
   "loginFailed": "Login failed. Please check your credentials and try again.",
-  "registerFailed": "Registration failed. Please try again later."
+  "registerFailed": "Registration failed. Please try again later.",
+  "indications": "Indications"
 }

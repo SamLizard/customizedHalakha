@@ -60,8 +60,9 @@
   "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants et réessayer.",
   "registerFailed": "L'inscription a échoué. Veuillez réessayer plus tard.",
   "tags": {
-    "shabbat": "Shabbat", 
-    "yomTov": "Yom tov", 
+    "shabbat": "Shabbat",
+    "yomTov": "Yom tov",
     "erouv": "Erouv"
-  }
+  },
+  "indications": "Indications"
 }

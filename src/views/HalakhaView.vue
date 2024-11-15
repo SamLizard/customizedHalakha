@@ -1,18 +1,21 @@
 <template>
   <div>
-    <div class="navigation-arrows">
-      <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward" :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
-      <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward" :disabled="currentIndex >= answersHistory.length - 1" class="me-2 arrow-button"></v-btn>
-    </div>
     <!-- <halakha-question :data="trees[id].answers[0]" @select="answerSelection"></halakha-question> -->
-    <halakha-question :data="currentData" @select="answerSelection"></halakha-question>
+    <halakha-question :data="currentData" @select="answerSelection">
+      <template #actions>
+        <div class="navigation-arrows">
+          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward" :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
+          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward" :disabled="currentIndex >= answersHistory.length - 1" class="me-2 arrow-button"></v-btn>
+        </div>
+      </template>
+    </halakha-question>
   </div>
 </template>
 
 <script setup lang="ts">
 import trees from "../json/trees.json";
 import HalakhaQuestion from "@/components/HalakhaQuestion.vue";
-import { defineProps, ref, type Ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, type Ref, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps<{ id: string }>();
 
@@ -83,40 +86,18 @@ onBeforeUnmount(() => {
 } */
 
 .navigation-arrows {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
 
 @media (min-width: 960px) {
-  /* Position arrows at the same height as the component for large screens */
-  .navigation-arrows {
-    position: absolute;
-    top: 50%; /* Align vertically with component */
-    left: 0;
-    right: 0;
-    
-    /* transform: translateY(-100%);
-    transform: translateY(-20%);
-    top: 100%;
-    left: 0;
-    right: 0; */
-  }
-
   .arrow-button {
     margin: 0 2rem; /* Spacing for large screens */
-  }
-}
-
-@media (max-width: 960px) {
-  /* Place arrows above the component for small screens */
-  .navigation-arrows {
-    position: relative;
-    top: 0;
-    justify-content: space-between;
-    margin-bottom: 1rem;
   }
 }
 
