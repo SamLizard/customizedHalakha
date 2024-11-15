@@ -11,6 +11,10 @@ import HalakhaView from "@/views/HalakhaView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
+    path: "/:catchAll(.*)",
+    redirect: "/home",
+  },
+  {
     path: "/home",
     name: "home",
     component: HomeView,

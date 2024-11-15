@@ -4,15 +4,14 @@
       variant="solo" bg-color="transparent" type="hide">
       <template #selection="{ item }">
         <v-img :src="'/flags/' + item.value + '.svg'" min-width="50px" max-width="50px" />
-        <div :class="'m' + ($vuetify.locale.rtl[$i18n.locale] ? 'r' : 'l') + '-2'">
+        <div class="ms-2">
           {{ $t("language") }}
         </div>
       </template>
       <template #item="{ item, props }">
         <v-list-item v-bind="props">
           <template #prepend>
-            <v-img :src="'/flags/' + item.value + '.svg'"
-              :class="'m' + ($vuetify.locale.rtl[$i18n.locale] ? 'l' : 'r') + '-2'" min-width="50px" max-width="50px" />
+            <v-img :src="'/flags/' + item.value + '.svg'" class="me-2" min-width="50px" max-width="50px" />
           </template>
         </v-list-item>
       </template>

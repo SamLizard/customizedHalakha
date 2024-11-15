@@ -2,7 +2,7 @@
   <div>
     <!-- should display the possibilities -->
      <!-- the router push to halakha -->
-     <div v-for="topic in topics" :class="'m' + ($vuetify.locale.isRtl ? 'r' : 'l') + '-4'">
+     <div v-for="topic in topics" class="ms-4">
        <h2>{{ topic.mainTopic }}</h2>
        <tags-display :tags="topic.tags" class="my-2"></tags-display>
        <v-btn @click="goToNewView(topic.questionId)" class="mt-2 bubble">{{ topic.question }}</v-btn>
@@ -18,7 +18,6 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const goToNewView = (id: string) => {
-  console.log(id);
   router.push({ name: 'halakha', params: { id } });
 };
 </script>
