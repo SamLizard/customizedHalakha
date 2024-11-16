@@ -3,9 +3,9 @@
     <!-- should display the possibilities -->
      <!-- the router push to halakha -->
      <div v-for="topic in topics" class="ms-4">
-       <h2>{{ topic.mainTopic }}</h2>
+       <h2>{{ $t("topics." + topic.mainTopic) }}</h2>
        <tags-display :tags="topic.tags" class="my-2"></tags-display>
-       <v-btn @click="goToNewView(topic.questionId)" class="mt-2 bubble">{{ topic.question }}</v-btn>
+       <v-btn @click="goToNewView(topic.questionId)" class="mt-2 bubble">{{ $t(`topicsQuestion.${topic.mainTopic}.${topic.questionId}`) }}</v-btn>
       </div>
   </div>
 </template>

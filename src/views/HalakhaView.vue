@@ -4,8 +4,10 @@
     <halakha-question :data="currentData" @select="answerSelection">
       <template #actions>
         <div class="navigation-arrows">
-          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward" :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
-          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward" :disabled="currentIndex >= answersHistory.length - 1" class="me-2 arrow-button"></v-btn>
+          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward"
+            :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
+          <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward"
+            :disabled="currentIndex >= answersHistory.length - 1" class="me-2 arrow-button"></v-btn>
         </div>
       </template>
     </halakha-question>
@@ -13,7 +15,17 @@
 </template>
 
 <script setup lang="ts">
-import trees from "../json/trees.json";
+import { useI18n } from 'vue-i18n';
+const i18n = useI18n();
+
+const files = import.meta.glob('../json/trees-*.json', { eager: true });
+const trees = files[`../json/trees-${i18n.locale.value}.json`]?.default;
+/* 
+change it to something else.
+It should fetch the structure once, and instead of text, put an id. string? number? prefix "g" for global one?
+Then, it will have a file for each different language texts. (These files should be fetched)
+*/
+
 import HalakhaQuestion from "@/components/HalakhaQuestion.vue";
 import { ref, type Ref, onMounted, onBeforeUnmount } from 'vue';
 
@@ -31,7 +43,7 @@ const answerSelection = (index: number) => {
   if (currentIndex.value < answersHistory.value.length - 1) {
     // remove future from history
     answersHistory.value.splice(currentIndex.value + 1);
-  } 
+  }
 
   currentIndex.value++;
 
@@ -39,14 +51,14 @@ const answerSelection = (index: number) => {
   currentData.value = answersHistory.value[currentIndex.value]; // make it computed???
 };
 
-const goBackward = () => { 
+const goBackward = () => {
   if (currentIndex.value > 0) {
     currentIndex.value--;
     currentData.value = answersHistory.value[currentIndex.value];
   }
 };
 
-const goForward = () => { 
+const goForward = () => {
   if (currentIndex.value < answersHistory.value.length - 1) {
     currentIndex.value++;
     currentData.value = answersHistory.value[currentIndex.value];
@@ -97,7 +109,8 @@ onBeforeUnmount(() => {
 
 @media (min-width: 960px) {
   .arrow-button {
-    margin: 0 2rem; /* Spacing for large screens */
+    margin: 0 2rem;
+    /* Spacing for large screens */
   }
 }
 
@@ -115,5 +128,4 @@ onBeforeUnmount(() => {
 .arrow-button:hover:not(:disabled) {
   background-color: rgba(25, 118, 210, 0.1);
 }
-
 </style>

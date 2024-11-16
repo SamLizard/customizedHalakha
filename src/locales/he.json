@@ -59,5 +59,18 @@
   "filterTitle": "סינון פריטים",
   "loginFailed": "ההתחברות נכשלה. אנא בדוק את הפרטים שלך ונסה שוב.",
   "registerFailed": "ההרשמה נכשלה. אנא נסה שוב מאוחר יותר.",
-  "indications": "הוראות"
+  "tags": {
+    "shabbat": "שבת",
+    "yomTov": "יום טוב",
+    "erouv": "עירוב"
+  },
+  "indications": "הוראות",
+  "topics": {
+    "erouvTavshilin": "עירוב תבשילין"
+  },
+  "topicsQuestion": {
+    "erouvTavshilin": {
+      "0": "האם עליי לעשות עירוב תבשילין, ואם כן, האם צריך לברך?"
+    }
+  }
 }

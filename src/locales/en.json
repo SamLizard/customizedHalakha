@@ -59,5 +59,18 @@
   "filterTitle": "Filter Items",
   "loginFailed": "Login failed. Please check your credentials and try again.",
   "registerFailed": "Registration failed. Please try again later.",
-  "indications": "Indications"
+  "tags": {
+    "shabbat": "Shabbat",
+    "yomTov": "Yom tov",
+    "erouv": "Erouv"
+  },
+  "indications": "Indications",
+  "topics": {
+    "erouvTavshilin": "Erouv Tavshilin"
+  },
+  "topicsQuestion": {
+    "erouvTavshilin": {
+      "0": "Do I need to make an Eruv Tavshilin, and if so, should I say the blessing?"
+    }
+  }
 }

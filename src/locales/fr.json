@@ -64,5 +64,13 @@
     "yomTov": "Yom tov",
     "erouv": "Erouv"
   },
-  "indications": "Indications"
+  "indications": "Indications",
+  "topics": {
+    "erouvTavshilin": "Erouv Tavshilin"
+  },
+  "topicsQuestion": {
+    "erouvTavshilin": {
+      "0": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction ?"
+    }
+  }
 }

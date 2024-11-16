@@ -11,28 +11,15 @@
 
           <!-- Answers Section as Clickable Chips -->
           <v-card-text>
-            <!-- <div v-if="data.answers && Array.isArray(data.answers)" class="answer-options">
-            <v-chip v-for="(answer, index) in data.answers" :key="index" class="answer-chip" color="primary"
-                variant="outlined" @click="selectAnswer(index)">
-                {{ Array.isArray(answer.answer) ? answer.answer.join(', ') : answer.answer }}
-              </v-chip>
-            </div> -->
-
             <div v-if="data.answers && Array.isArray(data.answers)">
               <v-row dense>
                 <v-col :cols="12" :sm="10" :md="8" :lg="6" class="answer-options offset-md-3 offset-md-2 offset-sm-1 offset-0">
-                  <!-- class="answer-bubble" -->
                   <div v-for="(answer, index) in data.answers" :key="index" class="answer-options">
                     <template v-if="Array.isArray(answer.answer)">
-                      <!-- <v-btn v-for="(option, optionIndex) in answer.answer" :key="optionIndex" @click="selectAnswer(index)"
-                  size="large" class="bubble no-uppercase" varient="outlined" color="primary">
-                  {{ option }}
-                </v-btn> -->
                       <v-chip v-for="(option, optionIndex) in answer.answer" :key="optionIndex" class="answer-chip"
                         color="primary" variant="outlined" @click="selectAnswer(index)">{{ option }}</v-chip>
                     </template>
                     <template v-else>
-                      <!-- <v-btn @click="selectAnswer(index)"size="large" class="bubble no-uppercase" varient="outlined" color="primary">{{ answer.answer }}</v-btn> -->
                       <v-chip class="answer-chip" color="primary" variant="outlined" @click="selectAnswer(index)">{{
                         answer.answer }}</v-chip>
                     </template>
@@ -79,9 +66,6 @@ const props = defineProps<{
 
 const emit = defineEmits<{ (e: 'select', index: number): void }>();
 
-// // Manage current question data
-// const currentData = props.data;
-
 // Function to handle answer selection
 const selectAnswer = (index: number) => {
   emit('select', index);
@@ -100,9 +84,7 @@ const selectAnswer = (index: number) => {
   display: flex;
   flex-direction: column;
   min-height: 40vh;
-  /* Keep the height consistent */
   max-height: 60vh;
-  /* Keep the height consistent */
   width: 100%;
   padding: 16px;
   border-radius: 8px;
@@ -115,7 +97,6 @@ const selectAnswer = (index: number) => {
   color: #333;
   margin-bottom: 1rem;
   white-space: normal;
-  /* Allow text wrapping */
 }
 
 .answer-options {
@@ -162,17 +143,6 @@ const selectAnswer = (index: number) => {
 }
 </style>
 <style>
-/* .bubble {
-  border-radius: 20px;
-  padding: 8px 16px;
-} */
-/* .bubble {
-  border-radius: 24px;
-  padding: 8px 16px;
-  min-width: 100px;
-  text-align: center;
-  font-size: 0.9rem;
-} */
 .bubble {
   border-radius: 24px;
   padding: 8px 16px;

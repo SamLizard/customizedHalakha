@@ -7,5 +7,13 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["vite/client"], // Add this to recognize Vite-specific globals like `import.meta`
+    "strict": true,
+    "jsx": "preserve"
+  }
 }
