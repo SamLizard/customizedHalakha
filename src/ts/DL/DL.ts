@@ -54,7 +54,7 @@ const deleteItem = async (
   time: string,
   id: string
 ): Promise<boolean> => {
-  await delay();
+  await sleep();
 
   return true;
 };

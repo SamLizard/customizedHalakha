@@ -29,6 +29,7 @@ export default defineConfig({
     }),
 
   ],
+  base: '/customizedHalakha/', 
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
