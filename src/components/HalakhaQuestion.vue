@@ -162,17 +162,6 @@ const getText = (id: number | string): string => {
 }
 </style>
 <style>
-.bubble {
-  border-radius: 24px;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  text-align: center;
-  /* word-wrap: break-word; */
-  white-space: normal;
-  /* Allow text wrapping */
-  min-width: 100px;
-}
-
 .no-uppercase {
   text-transform: unset !important;
 }

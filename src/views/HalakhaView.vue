@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <halakha-question :data="trees[id].answers[0]" @select="answerSelection"></halakha-question> -->
     <halakha-question :data="currentData" :texts="texts" @select="answerSelection">
       <template #actions>
         <div class="navigation-arrows">
@@ -19,7 +18,7 @@ import trees from "../json/trees.json";
 import allTexts from "../json/texts.json";
 
 import HalakhaQuestion from "@/components/HalakhaQuestion.vue";
-import { ref, type Ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, type Ref, onMounted, onBeforeUnmount, computed } from 'vue';
 
 const props = defineProps<{ id: string }>();
 
@@ -27,7 +26,6 @@ const texts: Ref<object> = ref(allTexts[props.id]);
 
 var currentIndex: Ref<number> = ref(0);
 const answersHistory: Ref<Array<object>> = ref([trees[props.id]]);
-const currentData: Ref<object> = ref(answersHistory.value[0]);
 
 const answerSelection = (index: number) => {
   // if (currentData.value.answers[index]) { TODO: if there is an id for the answer, check it is same id
@@ -39,23 +37,24 @@ const answerSelection = (index: number) => {
     answersHistory.value.splice(currentIndex.value + 1);
   }
 
-  currentIndex.value++;
-
   answersHistory.value.push(currentData.value.answers[index]);
-  currentData.value = answersHistory.value[currentIndex.value]; // make it computed???
+  currentIndex.value++;
+  // currentData.value = answersHistory.value[currentIndex.value]; // make it computed???
 };
+
+const currentData = computed(() => {
+  return answersHistory.value[currentIndex.value];
+});
 
 const goBackward = () => {
   if (currentIndex.value > 0) {
     currentIndex.value--;
-    currentData.value = answersHistory.value[currentIndex.value];
   }
 };
 
 const goForward = () => {
   if (currentIndex.value < answersHistory.value.length - 1) {
     currentIndex.value++;
-    currentData.value = answersHistory.value[currentIndex.value];
   }
 };
 
