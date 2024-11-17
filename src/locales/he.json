@@ -76,5 +76,10 @@
   "texts": {
     "yes": "כן",
     "no": "לא"
+  },
+  "filters": {
+    "searchMainTopic": "חפש לפי נושא ראשי",
+    "filterLanguage": "סנן לפי שפה",
+    "filterTags": "סנן לפי תגים"
   }
 }

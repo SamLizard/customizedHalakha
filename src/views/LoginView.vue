@@ -87,7 +87,7 @@ import { useUserStore } from '@/stores/user';
 const userStore = useUserStore();
 
 import Swal from 'sweetalert2';
-import { login } from '../DL/DL';
+import { login } from '../ts/DL/DL';
 
 const checkLogin = async () => {
   try {

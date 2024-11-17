@@ -105,7 +105,7 @@ import { useUserStore } from '@/stores/user';
 const userStore = useUserStore();
 
 import Swal from 'sweetalert2';
-import { register } from '../DL/DL';
+import { register } from '../ts/DL/DL';
 
 const registerUser = async () => {
   try {

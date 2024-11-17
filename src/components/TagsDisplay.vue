@@ -3,7 +3,7 @@
       <v-chip
         v-for="(tagKey, index) in tags"
         :key="index"
-        :color="getRandomColor()"
+        :color="getTagColor(tagKey)"
         class="ma-1"
       >
         {{ $t("tags." + tagKey) }}
@@ -12,20 +12,11 @@
   </template>
   
   <script setup lang="ts">
-  import { PropType } from 'vue'
-  import { useI18n } from 'vue-i18n'
-  import { VChip, VRow } from 'vuetify/components'
-  
+  import { getTagColor } from '../ts/utils';
+
   const props = defineProps<{
     tags: string[]
   }>()
-  
-  const { t } = useI18n()
-  
-  const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'error'];
-  function getRandomColor() {
-    return colors[Math.floor(Math.random() * colors.length)]
-  }
   </script>
   
   <style scoped>

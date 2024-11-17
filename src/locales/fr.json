@@ -76,5 +76,10 @@
   "texts": {
     "yes": "Oui",
     "no": "Non"
+  },  
+  "filters": {
+    "searchMainTopic": "Rechercher par sujet principal",
+    "filterLanguage": "Filtrer par langue",
+    "filterTags": "Filtrer par étiquettes"
   }
 }

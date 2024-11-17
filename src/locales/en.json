@@ -76,5 +76,10 @@
   "texts": {
     "yes": "Yes",
     "no": "No"
+  },
+  "filters": {
+    "searchMainTopic": "Search by Main Topic",
+    "filterLanguage": "Filter by Language",
+    "filterTags": "Filter by Tags"
   }
 }
