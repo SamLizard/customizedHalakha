@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import type { VForm } from 'vuetify/components';
 import router from '@/router/router';
-import { useRules } from '../composables/rules';
+import { useRules } from '../ts/rules';
 const {
   requiredFieldRule,
   usernameLengthRules,
@@ -62,7 +62,7 @@ let password: Ref<string> = ref("");
 let loading: Ref<boolean> = ref(false);
 
 const form = ref<VForm | null>(null);
-import { sleep } from '@/composables/utils';
+import { sleep } from '../ts/utils';
 
 const submitForm = async () => {
   if ((await form.value!.validate()).valid) {

@@ -7,7 +7,6 @@ import HomeView from "../views/HomeView.vue";
 import HalakhaView from "@/views/HalakhaView.vue";
 // import LoginView from "../views/LoginView.vue";
 // import RegisterView from "../views/RegisterView.vue";
-// import ComponentsView from "../views/ComponentsView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -34,11 +33,6 @@ const routes: RouteRecordRaw[] = [
   //   path: "/register",
   //   name: "register",
   //   component: RegisterView,
-  // },
-  // {
-  //   path: "/components",
-  //   name: "components",
-  //   component: ComponentsView,
   // },
   // {
   //   path: '/register',

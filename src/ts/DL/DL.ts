@@ -1,4 +1,4 @@
-import { sleep } from "@/composables/utils";
+import { sleep } from "@/ts/utils";
 
 type details = {
   name: string;
