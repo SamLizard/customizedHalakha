@@ -3,7 +3,7 @@
     <v-select :items="otherLocales" item-title="text" item-value="lang" v-model="$i18n.locale" hide-details="auto" flat
       variant="solo" bg-color="transparent" type="hide">
       <template #selection="{ item }">
-        <v-img :src="import.meta.env.BASE_URL + 'flags/' + item.value + '.svg'" min-width="50px" max-width="50px" />
+        <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" min-width="50px" max-width="50px" />
         <div class="ms-2">
           {{ $t("language") }}
         </div>
@@ -11,7 +11,7 @@
       <template #item="{ item, props }">
         <v-list-item v-bind="props">
           <template #prepend>
-            <v-img :src="import.meta.env.BASE_URL + 'flags/' + item.value + '.svg'" class="me-2" min-width="50px" max-width="50px" />
+            <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" class="me-2" min-width="50px" max-width="50px" />
           </template>
         </v-list-item>
       </template>
@@ -19,7 +19,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, type Ref, computed } from 'vue';
+const baseUrl: Ref<string> = ref(import.meta.env.BASE_URL);
+
 import { useI18n } from 'vue-i18n';
 
 const i18n = useI18n();

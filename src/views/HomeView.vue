@@ -18,7 +18,7 @@
           <v-select v-model="selectedLanguage" item-title="text" item-value="lang" :items="languages"
             :label="$t('filters.filterLanguage')" clearable hide-details="auto">
             <template #selection="{ item }">
-              <v-img :src="import.meta.env.BASE_URL + 'flags/' + item.value + '.svg'" min-width="48px" max-width="48px" />
+              <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" min-width="48px" max-width="48px" />
               <div class="ms-2">
                 {{ $t("language", 1, { locale: item.value }) }}
               </div>
@@ -26,7 +26,7 @@
             <template #item="{ item, props }">
               <v-list-item v-bind="props">
                 <template #prepend>
-                  <v-img :src="import.meta.env.BASE_URL + 'flags/' + item.value + '.svg'" class="me-2" min-width="48px" max-width="48px" />
+                  <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" class="me-2" min-width="48px" max-width="48px" />
                 </template>
               </v-list-item>
             </template>
@@ -64,6 +64,8 @@ import topics from '../json/topics.json';
 import { ref, computed, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { getTagColor } from '../ts/utils';
+
+const baseUrl: Ref<string> = ref(import.meta.env.BASE_URL);
 
 const router = useRouter();
 const goToNewView = (id: string) => {
