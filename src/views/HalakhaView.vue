@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <halakha-question :data="trees[id].answers[0]" @select="answerSelection"></halakha-question> -->
-    <halakha-question :data="currentData" @select="answerSelection">
+    <halakha-question :data="currentData" :texts="texts" @select="answerSelection">
       <template #actions>
         <div class="navigation-arrows">
           <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward"
@@ -15,21 +15,15 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-const i18n = useI18n();
-
-const files = import.meta.glob('../json/trees-*.json', { eager: true });
-const trees = files[`../json/trees-${i18n.locale.value}.json`]?.default;
-/* 
-change it to something else.
-It should fetch the structure once, and instead of text, put an id. string? number? prefix "g" for global one?
-Then, it will have a file for each different language texts. (These files should be fetched)
-*/
+import trees from "../json/trees.json";
+import allTexts from "../json/texts.json";
 
 import HalakhaQuestion from "@/components/HalakhaQuestion.vue";
 import { ref, type Ref, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps<{ id: string }>();
+
+const texts: Ref<object> = ref(allTexts[props.id]);
 
 var currentIndex: Ref<number> = ref(0);
 const answersHistory: Ref<Array<object>> = ref([trees[props.id]]);
@@ -65,11 +59,12 @@ const goForward = () => {
   }
 };
 
+const isMac = navigator.platform.toLowerCase().includes('mac');
 const handleKeydown = (event: KeyboardEvent) => {
-  console.log(event);
-  if (event.metaKey && event.key === 'z' && !event.shiftKey) {
+  const isMainKey = (isMac && event.metaKey) || (!isMac && event.ctrlKey)
+  if ((isMainKey) && event.key === 'z' && !event.shiftKey) {
     goBackward();
-  } else if ((event.metaKey && event.shiftKey && event.key === 'z') || (event.metaKey && event.key === 'y')) {
+  } else if (isMainKey && (event.shiftKey && event.key.toLowerCase() === 'z') || (event.key === 'y')) {
     goForward();
   }
 }

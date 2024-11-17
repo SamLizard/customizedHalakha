@@ -72,5 +72,9 @@
     "erouvTavshilin": {
       "0": "Do I need to make an Eruv Tavshilin, and if so, should I say the blessing?"
     }
+  },
+  "texts": {
+    "yes": "Yes",
+    "no": "No"
   }
 }

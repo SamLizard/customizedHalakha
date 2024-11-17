@@ -72,5 +72,9 @@
     "erouvTavshilin": {
       "0": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction ?"
     }
+  },
+  "texts": {
+    "yes": "Oui",
+    "no": "Non"
   }
 }

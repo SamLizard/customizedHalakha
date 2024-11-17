@@ -6,7 +6,7 @@
         <v-card class="question-card" :elevation="$vuetify.display.smAndUp ? '2' : '0'">
           <!-- Question Section -->
           <v-card-title class="question-title px-xs-0 px-sm-4 px-md-8 px-lg-10" :style="!data.question ? 'align-self: center;' : ''">
-            {{ data.question || $t("indications") }}
+            {{ getText(data.question) || $t("indications") }}
           </v-card-title>
 
           <!-- Answers Section as Clickable Chips -->
@@ -17,11 +17,10 @@
                   <div v-for="(answer, index) in data.answers" :key="index" class="answer-options">
                     <template v-if="Array.isArray(answer.answer)">
                       <v-chip v-for="(option, optionIndex) in answer.answer" :key="optionIndex" class="answer-chip"
-                        color="primary" variant="outlined" @click="selectAnswer(index)">{{ option }}</v-chip>
+                        color="primary" variant="outlined" @click="selectAnswer(index)">{{ getText(option) }}</v-chip>
                     </template>
                     <template v-else>
-                      <v-chip class="answer-chip" color="primary" variant="outlined" @click="selectAnswer(index)">{{
-                        answer.answer }}</v-chip>
+                      <v-chip class="answer-chip" color="primary" variant="outlined" @click="selectAnswer(index)">{{ getText(answer.answer) }}</v-chip>
                     </template>
                   </div>
                 </v-col>
@@ -34,7 +33,7 @@
                 <template v-slot:prepend>
                   <v-icon icon="mdi-information-outline" size="large"></v-icon>
                 </template>
-                <v-list-item-content>{{ indication }}</v-list-item-content>
+                <v-list-item-content>{{ getText(indication) }}</v-list-item-content>
               </v-list-item>
             </v-list>
           </v-card-text>
@@ -61,6 +60,10 @@ const props = defineProps<{
   data: {
     type: QuestionData,
     required: true,
+  },
+  texts: {
+    type: object,
+    required: true,
   }
 }>();
 
@@ -69,7 +72,23 @@ const emit = defineEmits<{ (e: 'select', index: number): void }>();
 // Function to handle answer selection
 const selectAnswer = (index: number) => {
   emit('select', index);
-}
+};
+
+import { useI18n } from 'vue-i18n';
+const i18n = useI18n();
+const t = i18n.t;
+
+const getText = (id: number | string): string => {
+  try {
+    if (typeof id === "number") {
+      return props.texts[i18n.locale.value]?.[id] || props.texts[i18n.fallbackLocale.value]?.[id];
+    } else if (typeof id === "string") {
+      return t("texts." + id);
+    }
+  } catch {};
+
+  return "";
+};
 </script>
 
 <style scoped>

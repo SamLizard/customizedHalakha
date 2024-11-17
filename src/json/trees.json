@@ -1,0 +1,61 @@
+{
+  "0": {
+    "question": 1,
+    "answers": [
+      {
+        "answer": 2,
+        "question": 3,
+        "answers": [
+          {
+            "answer": ["yes", "no"],
+            "question": 4,
+            "answers": [
+              {
+                "answer": "yes",
+                "question": 5,
+                "answers": [
+                  {
+                    "answer": "yes",
+                    "indications": [6]
+                  },
+                  {
+                    "answer": "no",
+                    "indications": [7]
+                  }
+                ]
+              },
+              {
+                "answer": "no",
+                "indications": [8, 9, 10]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "answer": 11,
+        "question": 12,
+        "answers": [
+          {
+            "answer": 13,
+            "indications": [14]
+          },
+          {
+            "answer": 15,
+            "indications": [16]
+          }
+        ]
+      },
+      {
+        "answer": 17,
+        "question": 18,
+        "answers": [
+          {
+            "answer": "yes",
+            "indications": [19]
+          }
+        ]
+      }
+    ]
+  }
+}
