@@ -118,6 +118,22 @@ const getText = (id: number | string): string => {
   white-space: normal;
 }
 
+.indications {
+  margin-top: 1rem;
+  color: #666;
+}
+
+.actions-slot {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+:deep(.v-list-item__prepend) {
+  display: block !important;
+}
+</style>
+<style>
 .answer-options {
   display: flex;
   flex-direction: column;
@@ -146,22 +162,6 @@ const getText = (id: number | string): string => {
   transform: scale(1.05);
 }
 
-.indications {
-  margin-top: 1rem;
-  color: #666;
-}
-
-.actions-slot {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-:deep(.v-list-item__prepend) {
-  display: block !important;
-}
-</style>
-<style>
 .no-uppercase {
   text-transform: unset !important;
 }

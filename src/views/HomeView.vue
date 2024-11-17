@@ -42,14 +42,15 @@
         <v-expansion-panel v-for="(topic, index) in filteredTopics" :key="index">
           <v-expansion-panel-title>
             {{ $t("topics." + topic.mainTopic) }}
+            <tags-display :tags="topic.tags" class="my-2 ms-2" />
           </v-expansion-panel-title>
-          <v-expansion-panel-text>
-            <div v-for="item in topic.items" :key="item.questionId" class="ms-4">
-              <tags-display :tags="item.tags" class="my-2" />
-              <v-btn @click="goToNewView(item.questionId)" class="mt-2 bubble">
+          <v-expansion-panel-text class="answer-options">
+            <!-- <v-btn @click="goToNewView(item.questionId)" class="mt-2 bubble">
                 {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
-              </v-btn>
-            </div>
+              </v-btn> -->
+            <v-chip v-for="item in topic.items" :key="item.questionId" class="ms-4 answer-chip" color="primary"
+              variant="outlined" @click="goToNewView(item.questionId)">{{
+                $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}</v-chip>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -109,6 +110,7 @@ const filteredTopics = computed(() => {
     if (!acc[topic.mainTopic]) {
       acc[topic.mainTopic] = {
         mainTopic: topic.mainTopic,
+        tags: topic.tags,
         items: [],
       };
     }
