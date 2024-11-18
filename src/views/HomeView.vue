@@ -48,7 +48,7 @@
             <!-- <v-btn @click="goToNewView(item.questionId)" class="mt-2 bubble">
                 {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
               </v-btn> -->
-            <v-chip v-for="item in topic.items" :key="item.questionId" class="ms-4 answer-chip" color="primary"
+            <v-chip v-for="item in topic.items" :key="item.questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
               variant="outlined" @click="goToNewView(item.questionId)">{{
                 $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}</v-chip>
           </v-expansion-panel-text>

@@ -2,6 +2,7 @@
   <v-app-bar app color="#f2f2f2" :align="$vuetify.locale.isRtl ? 'right' : 'left'" class="navbar" flat>
     <!-- <template v-if="$vuetify.display.smAndUp"> -->
     <v-toolbar-title>
+      <v-btn v-if="router.currentRoute.value.name !== 'home'" @click="router.push('/home')" icon="mdi-home" size="x-small" rounded="xl" elevation="2" class="me-2 mb-2" style="background-color: white;"></v-btn>
       <strong>{{ $t("title") }}</strong>
     </v-toolbar-title>
     <!-- <v-spacer></v-spacer> -->

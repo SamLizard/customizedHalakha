@@ -79,7 +79,7 @@
   },  
   "filters": {
     "searchMainTopic": "Rechercher par sujet principal",
-    "filterLanguage": "Filtrer par langue",
+    "filterLanguage": "Filtrer par langue disponible",
     "filterTags": "Filtrer par étiquettes"
   }
 }

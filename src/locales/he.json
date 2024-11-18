@@ -79,7 +79,7 @@
   },
   "filters": {
     "searchMainTopic": "חפש לפי נושא ראשי",
-    "filterLanguage": "סנן לפי שפה",
+    "filterLanguage": "סנן לפי שפה זמינה",
     "filterTags": "סנן לפי תגים"
   }
 }
