@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- Filter Section -->
-    <v-container class="my-4">
+    <v-container>
       <v-row>
         <v-col cols="12" md="4">
-          <v-text-field v-model="search" :label="$t('filters.searchMainTopic')" clearable hide-details="auto" />
+          <v-text-field v-model="search" :label="$t('filters.searchMainTopic')" clearable hide-details="auto" :density="$vuetify.display.smAndUp ? 'default' : 'comfortable'" />
         </v-col>
         <v-col cols="12" md="4">
           <v-select v-model="selectedTags" :items="tags" :label="$t('filters.filterTags')" multiple clearable
@@ -41,7 +41,7 @@
       <v-expansion-panels v-model="panels">
         <v-expansion-panel v-for="(topic, index) in filteredTopics" :key="index">
           <v-expansion-panel-title>
-            {{ $t("topics." + topic.mainTopic) }}
+            <div style="white-space: nowrap;">{{ $t("topics." + topic.mainTopic) }}</div>
             <tags-display :tags="topic.tags" class="my-2 ms-2" />
           </v-expansion-panel-title>
           <v-expansion-panel-text class="answer-options">

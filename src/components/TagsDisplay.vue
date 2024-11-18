@@ -1,27 +1,49 @@
 <template>
-    <v-row>
-      <v-chip
-        v-for="(tagKey, index) in tags"
-        :key="index"
-        :color="getTagColor(tagKey)"
-        class="ma-1"
-      >
-        {{ $t("tags." + tagKey) }}
-      </v-chip>
-    </v-row>
-  </template>
-  
-  <script setup lang="ts">
-  import { getTagColor } from '../ts/utils';
+  <div class="tags-container" :title="allTags">
+    <v-chip
+      v-for="(tagKey, index) in tags"
+      :key="index"
+      :color="getTagColor(tagKey)"
+      class="tag-chip"
+    >
+      {{ $t("tags." + tagKey) }}
+    </v-chip>
+  </div>
+</template>
 
-  const props = defineProps<{
-    tags: string[]
-  }>()
-  </script>
-  
-  <style scoped>
-  .v-chip {
-    display: inline-flex;
-  }
-  </style>
-  
+<script setup lang="ts">
+import { computed } from "vue";
+import { getTagColor } from '../ts/utils';
+
+const props = defineProps<{
+  tags: string[];
+}>();
+
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+// Tooltip content for all tags
+const allTags = computed(() => props.tags.map(tagKey => t("tags." + tagKey)).join(", "));
+</script>
+
+<style scoped>
+.tags-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+  max-width: 100%; /* Constrain width to available space */
+}
+
+.tag-chip {
+  flex-shrink: 0; /* Prevent chips from shrinking */
+  margin-right: 4px; /* Add spacing between tags */
+  padding: 0 8px;
+  white-space: nowrap; /* Keep tag text on one line */
+}
+
+.tags-container:hover {
+  cursor: pointer; /* Indicate interactivity */
+}
+</style>
