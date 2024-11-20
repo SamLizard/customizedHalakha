@@ -126,37 +126,6 @@ const filteredTopics = computed(() => {
     }
     return matchesSearch && topic.questionsId.length > 0
   })
-
-  // const groupedTopics = topics.reduce((acc: Record<string, any>, topic) => {
-  //   if (!acc[topic.mainTopic]) {
-  //     acc[topic.mainTopic] = {
-  //       mainTopic: topic.mainTopic,
-  //       tags: topic.tags,
-  //       items: [],
-  //     };
-  //   }
-  //   acc[topic.mainTopic].items.push(topic);
-  //   return acc;
-  // }, {});
-
-  // const groupedArray = Object.values(groupedTopics);
-
-  // return groupedArray.filter((topic: any) => {
-  //   const matchesSearch =
-  //     !search.value ||
-  //     t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
-  //   const matchesLanguage =
-  //     !selectedLanguage.value ||
-  //     topic.items.some((item: any) =>
-  //       questions[item].supportedLanguages.includes(selectedLanguage.value)
-  //     );
-  //   const matchesTags =
-  //     !selectedTags.value.length ||
-  //     topic.items.some((item: any) =>
-  //       selectedTags.value.every((tag) => item.tags.includes(tag))
-  //     );
-  //   return matchesSearch && matchesLanguage && matchesTags;
-  // });
 });
 
 const panels: Ref<Array<number>> = ref([0]);

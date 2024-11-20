@@ -7,7 +7,7 @@
     </v-toolbar-title>
     <!-- <v-spacer></v-spacer> -->
     <div v-if="$vuetify.display.smAndUp" class="route-links-container">
-      <v-btn v-for="route in router.getRoutes()" v-show="showRoute(route) && !!route.name" :key="route.name"
+      <v-btn v-for="route in currRoutes" :key="route.name"
         :color="route.name === router.currentRoute.value.name ? 'primary' : ''" :to="route.path" variant="elevated"
         active-class="no-active" flex-grow>
         {{ $t("routes." + route.name?.toString()) }}
@@ -80,11 +80,20 @@ const allowedRoutes = ['home', 'login', 'register'];
 
 const isLoggedIn = computed(() => userStore.userId !== undefined);
 
-const showRoute = (route: any): boolean => {
-  return isLoggedIn.value
-    ? !allowedRoutes.includes(route.name) || route.name === 'home'
-    : allowedRoutes.includes(route.name);
-};
+// const showRoute = (route: any): boolean => {
+//   return isLoggedIn.value
+//     ? !allowedRoutes.includes(route.name) || route.name === 'home'
+//     : allowedRoutes.includes(route.name);
+// };
+
+const currRoutes = computed(() => {
+  return router.getRoutes().filter((route) => {
+    return !!route.name && 
+      (isLoggedIn.value
+        ? !allowedRoutes.includes(route.name) || route.name === 'home'
+        : allowedRoutes.includes(route.name));
+  });
+});
 
 const encodeHTML = (str: string): string => {
   var elem = document.createElement("div");
