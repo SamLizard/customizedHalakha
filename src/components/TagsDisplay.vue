@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-container" :title="allTags">
+  <div class="tags-container" :title="allTags" :class="$vuetify.display.smAndUp ? '' : 'scroll-overflow'">
     <v-chip
       v-for="(tagKey, index) in tags"
       :key="index"
@@ -29,11 +29,14 @@ const allTags = computed(() => props.tags.map(tagKey => t("tags." + tagKey)).joi
 .tags-container {
   display: flex;
   flex-wrap: nowrap;
-  overflow: scroll;
   white-space: nowrap;
   text-overflow: ellipsis;
   align-items: center;
   max-width: 100%; /* Constrain width to available space */
+}
+
+.scroll-overflow {
+  overflow: scroll;
 }
 
 .tag-chip {

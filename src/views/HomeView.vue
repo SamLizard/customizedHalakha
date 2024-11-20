@@ -48,9 +48,9 @@
             <!-- <v-btn @click="goToNewView(item.questionId)" class="mt-2 bubble">
                 {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
               </v-btn> -->
-            <v-chip v-for="item in topic.items" :key="item.questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
-              variant="outlined" @click="goToNewView(item.questionId)">{{
-                $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}</v-chip>
+            <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
+              variant="outlined" @click="goToNewView(questionId)">{{
+                $t(`topicsQuestion.${topic.mainTopic}.${questionId}`) }}</v-chip>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import TagsDisplay from '@/components/TagsDisplay.vue';
 import topics from '../json/topics.json';
+import questions from '../json/questionInfos.json';
 import { ref, computed, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { getTagColor } from '../ts/utils';
@@ -108,36 +109,54 @@ const languages = computed((): LocaleItem[] => {
 
 // Computed filtered topics
 const filteredTopics = computed(() => {
-  const groupedTopics = topics.reduce((acc: Record<string, any>, topic) => {
-    if (!acc[topic.mainTopic]) {
-      acc[topic.mainTopic] = {
-        mainTopic: topic.mainTopic,
-        tags: topic.tags,
-        items: [],
-      };
+  return topics.map(({questionsId, ...properties}) => {
+    const filterQuestions = questionsId.filter((questionId) => {
+      const matchesLanguage = !selectedLanguage.value || questions[questionId].supportedLanguages.includes(selectedLanguage.value);
+      const matchesTags = !selectedTags.value || selectedTags.value.every((tag) => questions[questionId].tags.includes(tag));
+
+      return matchesLanguage && matchesTags;
+    });
+    
+    return ({...properties, questionsId: filterQuestions});
+  }).filter((topic) => {
+    let matchesSearch = !search.value || t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
+    if (!matchesSearch && topic.questionsId.length > 0) {
+      //search for a question that the search will match
+      matchesSearch = topic.questionsId.some((questionId) =>  t(`topicsQuestion.${topic.mainTopic}.${questionId}`).toLowerCase().includes(search.value.toLowerCase()));
     }
-    acc[topic.mainTopic].items.push(topic);
-    return acc;
-  }, {});
+    return matchesSearch && topic.questionsId.length > 0
+  })
 
-  const groupedArray = Object.values(groupedTopics);
+  // const groupedTopics = topics.reduce((acc: Record<string, any>, topic) => {
+  //   if (!acc[topic.mainTopic]) {
+  //     acc[topic.mainTopic] = {
+  //       mainTopic: topic.mainTopic,
+  //       tags: topic.tags,
+  //       items: [],
+  //     };
+  //   }
+  //   acc[topic.mainTopic].items.push(topic);
+  //   return acc;
+  // }, {});
 
-  return groupedArray.filter((topic: any) => {
-    const matchesSearch =
-      !search.value ||
-      t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
-    const matchesLanguage =
-      !selectedLanguage.value ||
-      topic.items.some((item: any) =>
-        item.supportedLanguages.includes(selectedLanguage.value)
-      );
-    const matchesTags =
-      !selectedTags.value.length ||
-      topic.items.some((item: any) =>
-        selectedTags.value.every((tag) => item.tags.includes(tag))
-      );
-    return matchesSearch && matchesLanguage && matchesTags;
-  });
+  // const groupedArray = Object.values(groupedTopics);
+
+  // return groupedArray.filter((topic: any) => {
+  //   const matchesSearch =
+  //     !search.value ||
+  //     t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
+  //   const matchesLanguage =
+  //     !selectedLanguage.value ||
+  //     topic.items.some((item: any) =>
+  //       questions[item].supportedLanguages.includes(selectedLanguage.value)
+  //     );
+  //   const matchesTags =
+  //     !selectedTags.value.length ||
+  //     topic.items.some((item: any) =>
+  //       selectedTags.value.every((tag) => item.tags.includes(tag))
+  //     );
+  //   return matchesSearch && matchesLanguage && matchesTags;
+  // });
 });
 
 const panels: Ref<Array<number>> = ref([0]);
