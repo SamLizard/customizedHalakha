@@ -37,7 +37,7 @@
               </v-list-item>
             </v-list>
           </v-card-text>
-
+          <!-- <v-btn @click="data.answers.push({answers: 'a', indications: ['a']})">a</v-btn> -->
           <!-- Slot for Bottom Actions -->
           <v-card-actions class="actions-slot">
             <slot name="actions"></slot>
@@ -67,7 +67,10 @@ const props = defineProps<{
   }
 }>();
 
-const emit = defineEmits<{ (e: 'select', index: number): void }>();
+// const emit = defineEmits<{ (e: 'select', index: number): void }>();
+const emit = defineEmits<{
+  select: [index: number]
+}>();
 
 // Function to handle answer selection
 const selectAnswer = (index: number) => {

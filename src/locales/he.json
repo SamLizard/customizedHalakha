@@ -59,6 +59,11 @@
   "filterTitle": "סינון פריטים",
   "loginFailed": "ההתחברות נכשלה. אנא בדוק את הפרטים שלך ונסה שוב.",
   "registerFailed": "ההרשמה נכשלה. אנא נסה שוב מאוחר יותר.",
+  "sources": {
+    "title": "פרטי מקור",
+    "globalSource": "מקור כללי",
+    "specificSource": "מקור ספציפי"
+  },
   "tags": {
     "shabbat": "שבת",
     "yomTov": "יום טוב",
@@ -67,11 +72,6 @@
   "indications": "הוראות",
   "topics": {
     "erouvTavshilin": "עירוב תבשילין"
-  },
-  "topicsQuestion": {
-    "erouvTavshilin": {
-      "0": "האם עליי לעשות עירוב תבשילין, ואם כן, האם צריך לברך?"
-    }
   },
   "texts": {
     "yes": "כן",

@@ -1,28 +1,37 @@
 <template>
   <div>
+    <!-- {{ currentData }} -->
     <halakha-question :data="currentData" :texts="texts" @select="answerSelection">
       <template #actions>
         <div class="navigation-arrows">
           <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward"
             :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
+            <v-btn v-if="currentData.indications && Array.isArray(currentData.indications)" 
+                   icon="mdi-format-quote-close"
+                   @click="sourcesRef.openDialog()"></v-btn>
           <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward"
             :disabled="currentIndex >= answersHistory.length - 1" class="me-2 arrow-button"></v-btn>
         </div>
       </template>
     </halakha-question>
+    <sources-popup ref="sourcesRef" :globalText="questions[id].texts[$vuetify.locale.current].sources" :specificText="currentSources"></sources-popup>
   </div>
 </template>
 
 <script setup lang="ts">
 import trees from "../json/trees.json";
 import allTexts from "../json/texts.json";
+import questions from "../json/questionInfos.json";
 
 import HalakhaQuestion from "@/components/HalakhaQuestion.vue";
+import SourcesPopup from "@/components/SourcesPopup.vue";
 import { ref, type Ref, onMounted, onBeforeUnmount, computed } from 'vue';
 
 const props = defineProps<{ id: string }>();
 
 const texts: Ref<object> = ref(allTexts[props.id]);
+
+const sourcesRef = ref();
 
 var currentIndex: Ref<number> = ref(0);
 const answersHistory: Ref<Array<object>> = ref([trees[props.id]]);
@@ -44,6 +53,12 @@ const answerSelection = (index: number) => {
 
 const currentData = computed(() => {
   return answersHistory.value[currentIndex.value];
+});
+
+import { useI18n } from 'vue-i18n';
+const i18n = useI18n();
+const currentSources = computed(() => {
+  return currentData.value.sources ? texts.value[i18n.locale.value][currentData.value.sources] : "";
 });
 
 const goBackward = () => {

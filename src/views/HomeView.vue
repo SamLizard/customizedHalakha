@@ -49,8 +49,7 @@
                 {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
               </v-btn> -->
             <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
-              variant="outlined" @click="goToNewView(questionId)">{{
-                $t(`topicsQuestion.${topic.mainTopic}.${questionId}`) }}</v-chip>
+              variant="outlined" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current].question }}</v-chip>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -59,9 +58,9 @@
 </template>
 
 <script setup lang="ts">
+import questions from '../json/questionInfos.json';
 import TagsDisplay from '@/components/TagsDisplay.vue';
 import topics from '../json/topics.json';
-import questions from '../json/questionInfos.json';
 import { ref, computed, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { getTagColor } from '../ts/utils';
@@ -111,7 +110,7 @@ const languages = computed((): LocaleItem[] => {
 const filteredTopics = computed(() => {
   return topics.map(({questionsId, ...properties}) => {
     const filterQuestions = questionsId.filter((questionId) => {
-      const matchesLanguage = !selectedLanguage.value || questions[questionId].supportedLanguages.includes(selectedLanguage.value);
+      const matchesLanguage = !selectedLanguage.value || Object.keys(questions[questionId].texts).includes(selectedLanguage.value);
       const matchesTags = !selectedTags.value || selectedTags.value.every((tag) => questions[questionId].tags.includes(tag));
 
       return matchesLanguage && matchesTags;

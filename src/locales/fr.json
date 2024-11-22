@@ -59,19 +59,20 @@
   "filterTitle": "Filtrer les éléments",
   "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants et réessayer.",
   "registerFailed": "L'inscription a échoué. Veuillez réessayer plus tard.",
+  "sources": {
+    "title": "Détails de la source",
+    "globalSource": "Source globale",
+    "specificSource": "Source spécifique"
+  },
   "tags": {
     "shabbat": "Shabbat",
     "yomTov": "Yom tov",
+    "a": "a",
     "erouv": "Erouv"
   },
   "indications": "Indications",
   "topics": {
     "erouvTavshilin": "Erouv Tavshilin"
-  },
-  "topicsQuestion": {
-    "erouvTavshilin": {
-      "0": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction ?"
-    }
   },
   "texts": {
     "yes": "Oui",

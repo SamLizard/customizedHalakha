@@ -1,6 +1,23 @@
 {
-    "0": {
-        "supportedLanguages": ["fr", "en", "he"],
-        "tags": ["shabbat", "yomTov", "erouv"]
+  "0": {
+    "tags": [
+      "shabbat",
+      "yomTov",
+      "erouv"
+    ],
+    "texts": {
+      "fr": {
+        "question": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction?",
+        "sources": "Les sources"        
+      },
+      "en": {
+        "question": "Do I need to make an Eruv Tavshilin, and if so, should I say the blessing?",
+        "sources": "The sources"        
+      },
+      "he": {
+        "question": "האם עליי לעשות עירוב תבשילין, ואם כן, האם צריך לברך?",
+        "sources": "מקורות"          
+      }
     }
+  }
 }
