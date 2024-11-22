@@ -3,7 +3,7 @@
     <v-row align="center" justify="center" style="width: 100%;">
       <!-- Responsive Card -->
       <v-col :cols="12" :sm="8" :md="6" class="d-flex justify-center">
-        <v-card class="question-card" :elevation="$vuetify.display.smAndUp ? '2' : '0'">
+        <v-card :class="$vuetify.display.smAndUp ? 'large-screen-height' : 'small-screen-height'" class="question-card" :elevation="$vuetify.display.smAndUp ? '2' : '0'">
           <!-- Question Section -->
           <v-card-title class="question-title px-xs-0 px-sm-4 px-md-8 px-lg-10" :style="!data.question ? 'align-self: center;' : ''">
             {{ getText(data.question) || $t("indications") }}
@@ -105,12 +105,20 @@ const getText = (id: number | string): string => {
 .question-card {
   display: flex;
   flex-direction: column;
-  min-height: 40vh;
-  max-height: 60vh;
   width: 100%;
   padding: 16px;
   border-radius: 8px;
   transition: box-shadow 0.3s ease;
+}
+
+.question-card.small-screen-height {
+  min-height: 55vh;
+  max-height: 80vh;
+}
+
+.question-card.large-screen-height {
+  min-height: 40vh;
+  max-height: 60vh;
 }
 
 .question-title {
