@@ -65,13 +65,12 @@
     "specificSource": "Specific Source"
   },
   "tags": {
-    "shabbat": "Shabbat",
-    "yomTov": "Yom tov",
-    "erouv": "Erouv"
+    "hanouka": "Hanouka",
+    "bougies": "Candles"
   },
   "indications": "Indications",
   "topics": {
-    "erouvTavshilin": "Erouv Tavshilin"
+    "hanouka": "Hanouka"
   },
   "texts": {
     "yes": "Yes",

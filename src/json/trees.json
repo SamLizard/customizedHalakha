@@ -4,55 +4,99 @@
     "answers": [
       {
         "answer": 2,
-        "question": 3,
+        "question": 4,
         "answers": [
           {
-            "answer": ["yes", "no"],
-            "question": 4,
+            "answer": "yes",
+            "question": 5,
             "answers": [
               {
-                "answer": "yes",
-                "question": 5,
+                "answer": 6,
+                "question": 8,
                 "answers": [
                   {
                     "answer": "yes",
-                    "indications": [6]
+                    "indications": [9]
                   },
                   {
                     "answer": "no",
-                    "indications": [7]
+                    "indications": [10]
                   }
                 ]
               },
               {
-                "answer": "no",
-                "indications": [8, 9, 10]
+                "answer": 7,
+                "indications": [11]
+              }
+            ]
+          },
+          {
+            "answer": "no",
+            "question": 12,
+            "answers": [
+              {
+                "answer": 13,
+                "indications": [14]
+              },
+              {
+                "answer": 15,
+                "question": 16,
+                "answers": [
+                  {
+                    "answer": 17,
+                    "indications": [18]
+                  },
+                  {
+                    "answer": 19,
+                    "indications": [20]
+                  }
+                ]
               }
             ]
           }
         ]
       },
       {
-        "answer": 11,
-        "question": 12,
+        "answer": 3,
+        "question": 21,
         "answers": [
           {
-            "answer": 13,
-            "indications": [14]
+            "answer": 22,
+            "question": 24,
+            "answers": [
+              {
+                "answer": 25,
+                "question": 26,
+                "answers": [
+                  {
+                    "answer": 27,
+                    "indications": [29]
+                  },
+                  {
+                    "answer": 28,
+                    "indications": [30]
+                  }
+                ]
+              },
+              {
+                "answer": 31,
+                "indications": [32]
+              }
+            ]
           },
           {
-            "answer": 15,
-            "indications": [16]
-          }
-        ]
-      },
-      {
-        "answer": 17,
-        "question": 18,
-        "answers": [
-          {
-            "answer": "yes",
-            "indications": [19]
+            "answer": 23,
+            "question": 33,
+            "answers": [
+              {
+                "answer": 34,
+                "indications": [35]
+              },
+              {
+                "answer": 36,
+                "indications": [37]
+              }
+            ]
           }
         ]
       }

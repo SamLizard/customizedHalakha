@@ -1,22 +1,13 @@
 {
   "0": {
     "tags": [
-      "shabbat",
-      "yomTov",
-      "erouv"
+      "hanouka",
+      "bougies"
     ],
     "texts": {
       "fr": {
-        "question": "Dois-je faire un Erouv Tavshilin et, si oui, faut-il faire la bénédiction?",
-        "sources": "Les sources"        
-      },
-      "en": {
-        "question": "Do I need to make an Eruv Tavshilin, and if so, should I say the blessing?",
-        "sources": "The sources"        
-      },
-      "he": {
-        "question": "האם עליי לעשות עירוב תבשילין, ואם כן, האם צריך לברך?",
-        "sources": "מקורות"          
+        "question": "Je ne suis pas chez moi pendant Hanoucca, dois-je allumer? Avec une Braha?",
+        "sources": "Pas de sources disponibles pour cette question." 
       }
     }
   }

@@ -65,13 +65,12 @@
     "specificSource": "מקור ספציפי"
   },
   "tags": {
-    "shabbat": "שבת",
-    "yomTov": "יום טוב",
-    "erouv": "עירוב"
+    "hanouka": "חנוכה",
+    "bougies": "נרות"
   },
   "indications": "הוראות",
   "topics": {
-    "erouvTavshilin": "עירוב תבשילין"
+    "hanouka": "חנוכה"
   },
   "texts": {
     "yes": "כן",
