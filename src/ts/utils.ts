@@ -8,9 +8,8 @@ function getRandomColor() {
 }
 
 const tagsColors: object = {
-  "shabbat": "red",
-  "yomTov": "blue",
-  "erouv": "green"
+  "hanouka": "blue",
+  "bougies": "orange",
 };
 
 const getTagColor = (tagKey: string): string => {

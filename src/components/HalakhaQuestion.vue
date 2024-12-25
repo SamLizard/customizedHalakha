@@ -164,6 +164,7 @@ const getText = (id: number | string): string => {
   /* Allow multi-line text */
   text-align: center;
   word-wrap: break-word;
+  height: auto !important;
   min-height: 48px;
   /* Ensure enough height for multi-line text */
   /* line-height: 1.4;  */
