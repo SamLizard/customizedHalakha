@@ -6,7 +6,7 @@
         <div class="navigation-arrows">
           <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'right' : 'left')" @click="goBackward"
             :disabled="currentIndex == 0" class="ms-2 arrow-button"></v-btn>
-          <v-btn v-if="currentData.indications && Array.isArray(currentData.indications)" 
+          <v-btn v-if="currentData.indications && Array.isArray(currentData.indications) && (questions[id].texts[$vuetify.locale.current].sources || currentSources)"
                   icon="mdi-format-quote-close"
                   @click="sourcesRef.openDialog()"></v-btn>
           <v-btn :icon="'mdi-arrow-' + ($vuetify.locale.isRtl ? 'left' : 'right')" @click="goForward"
