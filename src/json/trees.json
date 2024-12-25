@@ -16,7 +16,7 @@
                 "answers": [
                   {
                     "answer": "yes",
-                    "indications": [9]
+                    "indications": [9, 30]
                   },
                   {
                     "answer": "no",
@@ -36,7 +36,7 @@
             "answers": [
               {
                 "answer": 13,
-                "indications": [14]
+                "indications": [14, 38]
               },
               {
                 "answer": 15,
@@ -44,11 +44,11 @@
                 "answers": [
                   {
                     "answer": 17,
-                    "indications": [18]
+                    "indications": [20, 39]
                   },
                   {
                     "answer": 19,
-                    "indications": [20]
+                    "indications": [20, 39]
                   }
                 ]
               }
@@ -70,17 +70,17 @@
                 "answers": [
                   {
                     "answer": 27,
-                    "indications": [29]
+                    "indications": [29, 30]
                   },
                   {
                     "answer": 28,
-                    "indications": [30]
+                    "indications": [37]
                   }
                 ]
               },
               {
                 "answer": 31,
-                "indications": [32]
+                "indications": [37]
               }
             ]
           },
@@ -90,7 +90,7 @@
             "answers": [
               {
                 "answer": 34,
-                "indications": [35]
+                "indications": [35, 30]
               },
               {
                 "answer": 36,
