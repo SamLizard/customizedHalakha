@@ -1,7 +1,6 @@
 <template>
   <v-app fluid>
     <nav-bar @logout="logout" :key="$router.currentRoute.value.fullPath" :personal-details="personalDetails" />
-    <v-time-picker />
     <v-main fluid class="mt-sm-0 mt-md-4 mt-lg-8">
       <router-view :key="$router.currentRoute.value.fullPath" @connected="setPersonalDetails" />
     </v-main>
