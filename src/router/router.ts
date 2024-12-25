@@ -52,6 +52,10 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Scroll to top when navigating to a new route
+    return { top: 0 };
+  },
 });
 
 export default router;
