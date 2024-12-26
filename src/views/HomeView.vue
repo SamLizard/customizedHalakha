@@ -3,36 +3,47 @@
     <!-- Filter Section -->
     <v-container>
       <v-row>
+        <!-- Always visible filter -->
         <v-col cols="12" md="4">
           <v-text-field v-model="search" :label="$t('filters.searchMainTopic')" clearable hide-details="auto" :density="$vuetify.display.smAndUp ? 'default' : 'comfortable'" />
         </v-col>
-        <v-col cols="12" md="4">
-          <v-select v-model="selectedTags" :items="tags" :label="$t('filters.filterTags')" multiple clearable
-            hide-details="auto" chips>
-            <template #chip="{ item }">
-              <v-chip :color="getTagColor(item.value)">{{ item.title }}</v-chip>
-            </template>
-          </v-select>
+        <!-- Additional filters with transition -->
+        <v-expand-transition :duration="150">
+          <v-col cols="12" md="8" v-show="showFilters || $vuetify.display.mdAndUp">
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-select v-model="selectedTags" :items="tags" :label="$t('filters.filterTags')" multiple clearable hide-details="auto" chips>
+                  <template #chip="{ item }">
+                    <v-chip :color="getTagColor(item.value)">{{ item.title }}</v-chip>
+                  </template>
+                </v-select>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-select v-model="selectedLanguage" item-title="text" item-value="lang" :items="languages" :label="$t('filters.filterLanguage')" clearable hide-details="auto">
+                  <template #selection="{ item }">
+                    <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" min-width="48px" max-width="48px" />
+                    <div class="ms-2">
+                      {{ $t("language", 1, { locale: item.value }) }}
+                    </div>
+                  </template>
+                  <template #item="{ item, props }">
+                    <v-list-item v-bind="props">
+                      <template #prepend>
+                        <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" class="me-2" min-width="48px" max-width="48px" />
+                      </template>
+                    </v-list-item>
+                  </template>
+                </v-select>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-expand-transition>
+        <!-- Toggle button for additional filters -->
+        <v-col cols="12" class="d-md-none">
+          <v-btn @click="showFilters = !showFilters" :prepend-icon="showFilters ? 'mdi-chevron-up' : 'mdi-chevron-down'" density="compact" rounded>
+            {{ showFilters ? $t('filters.hideAdvanced') : $t('filters.showAdvanced') }}
+          </v-btn>
         </v-col>
-        <v-col cols="12" md="4">
-          <v-select v-model="selectedLanguage" item-title="text" item-value="lang" :items="languages"
-            :label="$t('filters.filterLanguage')" clearable hide-details="auto">
-            <template #selection="{ item }">
-              <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" min-width="48px" max-width="48px" />
-              <div class="ms-2">
-                {{ $t("language", 1, { locale: item.value }) }}
-              </div>
-            </template>
-            <template #item="{ item, props }">
-              <v-list-item v-bind="props">
-                <template #prepend>
-                  <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" class="me-2" min-width="48px" max-width="48px" />
-                </template>
-              </v-list-item>
-            </template>
-          </v-select>
-        </v-col>
-
       </v-row>
     </v-container>
 
@@ -45,9 +56,6 @@
             <tags-display :tags="topic.tags" class="my-2 ms-2" />
           </v-expansion-panel-title>
           <v-expansion-panel-text class="answer-options">
-            <!-- <v-btn @click="goToNewView(item.questionId)" class="mt-2 bubble">
-                {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
-              </v-btn> -->
             <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
               variant="outlined" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current]?.question || questions[questionId].texts[$vuetify.locale.fallback].question }}</v-chip>
           </v-expansion-panel-text>
@@ -80,6 +88,7 @@ const t = i18n.t;
 const search = ref('');
 const selectedLanguage = ref<string | null>(i18n.locale.value);
 const selectedTags = ref<string[]>([]);
+const showFilters = ref(false);
 
 interface LocaleItem {
   lang: string;
@@ -92,14 +101,11 @@ interface selectItem {
 }
 
 // Available filters
-// const tags = Array.from(new Set(topics.flatMap((topic) => topic.tags)));
-// const tags = Object.keys(i18n.messages.value[i18n.locale.value].tags);
 const tags = computed((): selectItem[] => {
   return Object.keys(i18n.messages.value[i18n.locale.value].tags).map((tagKey) => {
     return { title: t("tags." + tagKey) as string, value: tagKey };
   })
 })
-// const languages = Array.from(new Set(topics.flatMap((t) => t.supportedLanguages))).map((lang) => { title: t(lang)});
 const languages = computed((): LocaleItem[] => {
   return i18n.availableLocales.map((lang) => {
     return { lang: lang, text: t("language", 1, { locale: lang }) as string };
@@ -118,10 +124,11 @@ const filteredTopics = computed(() => {
     
     return ({...properties, questionsId: filterQuestions});
   }).filter((topic) => {
-    let matchesSearch = !search.value || t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
+    let matchesSearch = !search.value || Object.keys(i18n.messages.value).some((locale) => {
+      return t("topics." + topic.mainTopic, 1, { locale }).toLowerCase().includes(search.value.toLowerCase());
+    });
     if (!matchesSearch && topic.questionsId.length > 0) {
-      //search for a question that the search will match
-      matchesSearch = topic.questionsId.some((questionId) =>  t(`topicsQuestion.${topic.mainTopic}.${questionId}`).toLowerCase().includes(search.value.toLowerCase()));
+      matchesSearch = topic.questionsId.some((questionId) =>  Object.values(questions[questionId]["texts"]).map(({question}) => question).join(" ").toLowerCase().includes(search.value.toLowerCase()));
     }
     return matchesSearch && topic.questionsId.length > 0
   })

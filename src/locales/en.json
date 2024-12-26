@@ -79,6 +79,8 @@
   "filters": {
     "searchMainTopic": "Search by Main Topic",
     "filterLanguage": "Filter by avalailable language",
-    "filterTags": "Filter by Tags"
+    "filterTags": "Filter by Tags",
+    "hideAdvanced": "Hide advanced filters",
+    "showAdvanced": "Show advanced filters"
   }
 }

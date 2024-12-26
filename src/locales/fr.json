@@ -75,10 +75,12 @@
   "texts": {
     "yes": "Oui",
     "no": "Non"
-  },  
+  },
   "filters": {
     "searchMainTopic": "Rechercher par sujet principal",
     "filterLanguage": "Filtrer par langue disponible",
-    "filterTags": "Filtrer par étiquettes"
+    "filterTags": "Filtrer par étiquettes",
+    "hideAdvanced": "Masquer les filtres avancés",
+    "showAdvanced": "Afficher les filtres avancés"
   }
 }

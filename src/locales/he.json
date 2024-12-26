@@ -79,6 +79,8 @@
   "filters": {
     "searchMainTopic": "חפש לפי נושא ראשי",
     "filterLanguage": "סנן לפי שפה זמינה",
-    "filterTags": "סנן לפי תגים"
+    "filterTags": "סנן לפי תגים",
+    "hideAdvanced": "הסתר מסנן מתקדם",
+    "showAdvanced": "הצג מסנן מתקדם"
   }
 }
