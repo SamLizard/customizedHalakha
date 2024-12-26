@@ -7,6 +7,12 @@
     "texts": {
       "fr": {
         "question": "Vous n’êtes pas chez vous pendant Hanoucca (en vacances, à l’hôtel, chez un ami…) : devez-vous allumer la ‘Hanoukia avec bénédiction ?"
+      },
+      "en": {
+        "question": "You are not at home during Hanukkah (on vacation, at a hotel, at a friend’s house…): should you light the Hanukkiah with a blessing?"
+      },
+      "he": {
+        "question": "אתה לא בבית בחנוכה (בחופשה, במלון, אצל חבר…): האם עליך להדליק את החנוכיה עם ברכה?"
       }
     }
   }
