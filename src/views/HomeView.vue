@@ -49,7 +49,7 @@
                 {{ $t(`topicsQuestion.${topic.mainTopic}.${item.questionId}`) }}
               </v-btn> -->
             <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
-              variant="outlined" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current].question }}</v-chip>
+              variant="outlined" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current]?.question || questions[questionId].texts[$vuetify.locale.fallback].question }}</v-chip>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>

@@ -8,9 +8,9 @@
       "5": "Où logez-vous?",
       "6": "Hôtel, location saisonnière, hôpital, chez un ami",
       "7": "Résidence secondaire, location longue durée",
-      "8": "Y a-t-il des Honouccia allumées que vous pouvez voir?",
-      "9": "Pas besoin d'allumer, vous êtes acquitté par l'allumage de votre maison.",
-      "10": "Vous devez allumer avec Braha et il serait mieux de penser à ne pas s'acquiter par l'allumage de chez vous",
+      "8": "Y a-t-il des Hanouccia allumées que vous pouvez voir?",
+      "9": "Pas besoin d’allumer, vous êtes acquitté par l’allumage de votre maison.",
+      "10": "Vous devez allumer avec Braha, et il serait mieux de penser à ne pas s’acquitter par l’allumage de chez vous",
       "11": "Allumer avec Braha.",
       "12": "Où logerez-vous?",
       "13": "Hôtel, location saisonnière, longue durée, hôpital, résidence secondaire",
@@ -28,17 +28,18 @@
       "25": "Marié",
       "26": "Votre femme allume-t-elle a la maison?",
       "27": "Votre femme allume à la maison",
-      "28": "Votre femme n'allume pas à la maison",
-      "29": "Pas besoin d'allumer, vous êtes quitte par votre femme.",
-      "30": "Il serait bien d'assister à un allumage pour écouter les Brachot.",
+      "28": "Votre femme n’allume pas à la maison",
+      "29": "Pas besoin d’allumer, vous êtes quitte par votre femme.",
+      "30": "Il serait bien d’assister à un allumage pour écouter les Brachot.",
       "31": "Célibataire",
       "32": "// Indications pour les célibataires",
       "33": "Quelqu’un allume-t-il a la maison?",
       "34": "Le père de famille allume a la maison.",
-      "35": "Vous n'avez pas besoin d'allumer.",
-      "36": "Personne n'allume a la maison.",
+      "35": "Vous n’avez pas besoin d’allumer.",
+      "36": "Personne n’allume a la maison.",
       "37": "Vous devez allumer avec Braha.",
-      "38": "Attention, pour les cas d'un hôtel, vous devez vérifier avec votre Rav où et comment allumer.",
-      "39": "Attention, de vérifier avec votre Rav comment vous associer avec le propriétaire qui vous héberge."    }
+      "38": "Attention, pour les cas d’un hôtel, vous devez vérifier avec votre Rav où et comment allumer.",
+      "39": "Attention, de vérifier avec votre Rav comment vous associer avec le propriétaire qui vous héberge."
+    }
   }
 }
