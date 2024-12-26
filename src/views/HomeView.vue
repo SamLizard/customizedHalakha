@@ -15,8 +15,8 @@
           </v-select>
         </v-col>
         <v-col cols="12" md="4">
-          <v-select v-model="selectedLanguage" item-title="text" item-value="lang" :items="languages"
-            :label="$t('filters.filterLanguage')" clearable hide-details="auto">
+          <v-select v-model="selectedLanguages" item-title="text" item-value="lang" :items="languages"
+            :label="$t('filters.filterLanguage')" multiple clearable hide-details="auto">
             <template #selection="{ item }">
               <v-img :src="baseUrl + 'flags/' + item.value + '.svg'" min-width="48px" max-width="48px" />
               <div class="ms-2">
@@ -78,7 +78,7 @@ const t = i18n.t;
 
 // Filter state
 const search = ref('');
-const selectedLanguage = ref<string | null>(i18n.locale.value);
+const selectedLanguages = ref<string[]>([i18n.locale.value]);
 const selectedTags = ref<string[]>([]);
 
 interface LocaleItem {
@@ -110,7 +110,9 @@ const languages = computed((): LocaleItem[] => {
 const filteredTopics = computed(() => {
   return topics.map(({questionsId, ...properties}) => {
     const filterQuestions = questionsId.filter((questionId) => {
-      const matchesLanguage = !selectedLanguage.value || Object.keys(questions[questionId].texts).includes(selectedLanguage.value);
+      const matchesLanguage = !selectedLanguages.value.length
+                              || selectedLanguages.value.length < 1
+                              || selectedLanguages.value.some((lang) => Object.keys(questions[questionId].texts).includes(lang));
       const matchesTags = !selectedTags.value || selectedTags.value.every((tag) => questions[questionId].tags.includes(tag));
 
       return matchesLanguage && matchesTags;
@@ -118,10 +120,12 @@ const filteredTopics = computed(() => {
     
     return ({...properties, questionsId: filterQuestions});
   }).filter((topic) => {
-    let matchesSearch = !search.value || t("topics." + topic.mainTopic).toLowerCase().includes(search.value.toLowerCase());
+    let matchesSearch = !search.value || Object.keys(i18n.messages.value).some((locale) => {
+      return t("topics." + topic.mainTopic, 1, { locale }).toLowerCase().includes(search.value.toLowerCase());
+    });
     if (!matchesSearch && topic.questionsId.length > 0) {
       //search for a question that the search will match
-      matchesSearch = topic.questionsId.some((questionId) =>  t(`topicsQuestion.${topic.mainTopic}.${questionId}`).toLowerCase().includes(search.value.toLowerCase()));
+      matchesSearch = topic.questionsId.some((questionId) => Object.values(questions[questionId]["texts"]).map(({question}) => question).join(" ").toLowerCase().includes(search.value.toLowerCase()));
     }
     return matchesSearch && topic.questionsId.length > 0
   })
