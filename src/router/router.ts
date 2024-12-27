@@ -58,4 +58,14 @@ const router = createRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  if (window._paq && to.name === 'halakha' && to.params.id) {
+    const id = to.params.id;
+    window._paq.push(['setCustomUrl', window.location.href]);
+    window._paq.push(['setDocumentTitle', `Halakha View - ID: ${id}`]);
+    window._paq.push(['trackPageView']);
+  }
+  next();
+});
+
 export default router;
