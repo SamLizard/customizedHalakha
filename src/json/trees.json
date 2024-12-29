@@ -20,7 +20,7 @@
                   },
                   {
                     "answer": "no",
-                    "indications": [10]
+                    "indications": [10, 37]
                   }
                 ]
               },
@@ -40,17 +40,7 @@
               },
               {
                 "answer": 15,
-                "question": 16,
-                "answers": [
-                  {
-                    "answer": 17,
-                    "indications": [20, 39]
-                  },
-                  {
-                    "answer": 19,
-                    "indications": [20, 39]
-                  }
-                ]
+                "indications": [20, 39]
               }
             ]
           }
@@ -70,7 +60,17 @@
                 "answers": [
                   {
                     "answer": 27,
-                    "indications": [29, 30]
+                    "question": 8,
+                    "answers": [
+                      {
+                        "answer": "yes",
+                        "indications": [9, 30]
+                      },
+                      {
+                        "answer": "no",
+                        "indications": [10, 37]
+                      }
+                    ]
                   },
                   {
                     "answer": 28,
@@ -90,7 +90,17 @@
             "answers": [
               {
                 "answer": 34,
-                "indications": [35, 30]
+                "question": 8,
+                "answers": [
+                  {
+                    "answer": "yes",
+                    "indications": [9, 30]
+                  },
+                  {
+                    "answer": "no",
+                    "indications": [10, 37]
+                  }
+                ]
               },
               {
                 "answer": 36,
