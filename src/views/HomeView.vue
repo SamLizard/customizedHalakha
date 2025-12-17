@@ -56,8 +56,8 @@
             <tags-display :tags="topic.tags" class="my-2 ms-2" />
           </v-expansion-panel-title>
           <v-expansion-panel-text class="answer-options">
-            <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
-              variant="outlined" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current]?.question || questions[questionId].texts[$vuetify.locale.fallback].question }}</v-chip>
+            <v-chip v-for="questionId in topic.questionsId" :key="questionId" class="px-4 mx-lg-6 mx-md-4 mx-sm-2 answer-chip" color="primary"
+              variant="elevated" @click="goToNewView(questionId)">{{ questions[questionId].texts[$vuetify.locale.current]?.question || questions[questionId].texts[$vuetify.locale.fallback].question }}</v-chip>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>

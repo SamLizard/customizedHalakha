@@ -159,15 +159,18 @@ const getText = (id: number | string): string => {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   white-space: normal;
-  /* Allow multi-line text */
   text-align: center;
   word-wrap: break-word;
   height: auto !important;
   min-height: 48px;
-  /* Ensure enough height for multi-line text */
-  /* line-height: 1.4;  */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.answer-chip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .answer-chip:hover {
